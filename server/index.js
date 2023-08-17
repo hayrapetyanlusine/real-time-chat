@@ -9,7 +9,12 @@ const wss = new WebSocket.Server({ server });
 wss.on('connection', ws => {
     ws.on('message', msg => {
         wss.clients.forEach(client => {
-            if (client !== ws && client.readyState === WebSocket.OPEN) {
+            if (client.readyState === WebSocket.OPEN && client !== ws) {
+                const msgObj = JSON.parse(msg);
+                msgObj.isOwnMessage = false;
+                
+                client.send(JSON.stringify(msgObj));
+            } else {
                 client.send(msg);
             }
         });

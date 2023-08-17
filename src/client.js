@@ -14,18 +14,44 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     ws.addEventListener('message', (event) => {
-        console.log(event);
+        if (event.data instanceof Blob) {
+            reader = new FileReader();
+
+            reader.onload = () => {
+                const parseData = JSON.parse(reader.result);
+
+                addMessage(parseData);
+            };
+
+            reader.readAsText(event.data);
+        } else {
+            const parseData = JSON.parse(event.data);
+
+            addMessage(parseData);
+        }
     });
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        ws.send(JSON.stringify({
-            message: messageInput.value,
-            time: new Date()
-        }));
+        const message = messageInput.value.trim();
 
-        messageInput.value = "";
+        if (message !== "") {
+            const messageObject = {
+                message,
+                time: new Date(),
+                isOwnMessage: true
+            };
+
+            ws.send(JSON.stringify(messageObject));
+            messageInput.value = "";
+        }
     });
 
+    function addMessage(data) {
+        chatMessages.innerHTML += `<div
+            class=${data.isOwnMessage ? "own-message" : "new-message"}>
+            ${data.message}
+        </div>`;
+    }
 });
