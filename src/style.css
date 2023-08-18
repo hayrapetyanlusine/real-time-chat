@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* scrollbar */
+#chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chat-messages::-webkit-scrollbar-track {
+    background: #ddd;
+}
+
+#chat-messages::-webkit-scrollbar-thumb {
+    background: #bdbdbd;
+}
+
+/* sorting messages */
+.others-message {
+    text-align: left;
+}
+
+.others-message .msg-bubble {
+    background-color: #fff;
+}
+
+.my-message {
+    margin-left: auto;
+    flex-direction: row-reverse;
+}
+
+.my-message .msg-bubble {
+    background-color: #2688f7b6;
+}

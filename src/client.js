@@ -36,10 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const message = messageInput.value.trim();
 
-        if (message !== "") {
+        if (message) {
             const messageObject = {
                 message,
-                time: new Date(),
                 isOwnMessage: true
             };
 
@@ -49,9 +48,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function addMessage(data) {
-        chatMessages.innerHTML += `<div
-            class=${data.isOwnMessage ? "own-message" : "new-message"}>
-            ${data.message}
-        </div>`;
+        const msgHTML = `
+            <div class="flex items-end justify-evenly w-fit mb-4 ${data.isOwnMessage ? "my-message" : "others-message"}">   
+                <div class="w-12 h-12 m-0 mx-3 bg-no-repeat bg-center bg-cover rounded-full bg-gray"></div> 
+
+                <div class="msg-bubble max-w-[450px] p-[10px] rounded-[15px]">
+                    <div class="flex justify-between items-center mb-[10px]">
+                        <h4 class="mr-[10px] font-bold">${"Name"}</h4>
+                        <div>${new Date().getHours()} : ${new Date().getMinutes()}</div>
+                    </div>
+            
+                    <div>${data.message}</div>
+                </div>
+            </div>
+        `;
+
+        chatMessages.insertAdjacentHTML("beforeend", msgHTML);
+        chatMessages.scrollTop += 500;
     }
 });

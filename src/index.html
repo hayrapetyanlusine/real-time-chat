@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../build/css/style.css">
+</head>
+
+<body class="m-0 p-0 box-border font-serif">
+    <div class="flex h-screen">
+        <div class="shadow-inner basis-[20%] p-[10px]">
+            <div class="flex items-center justify-between py-[10px] px-0">
+                <svg class="h-[25px] w-[25px]" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                    <path
+                        d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+                </svg>
+                <input class="p-1" type="text" id="search" placeholder="Search...">
+            </div>
+            <!-- user -->
+            <div
+                class="flex items-center justify-start py-[10px] px-0 border-b-2 border-b-userBottom border-opacity-10">
+                <svg class="w-[25px] h-[25px] mr-[10px] rounded-[50%] bg-userBg" xmlns="http://www.w3.org/2000/svg"
+                    height="25px" viewBox="0 0 448 512">
+                    <path
+                        d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                </svg>
+                <p>Name</p>
+            </div>
+        </div>
+
+        <div class="bg-green w-full relative flex flex-col">
+            <form class="flex justify-between absolute bottom-5 w-full p-5 z-5">
+                <input type="text" id="message-input" class="w-full p-2 border-none rounded-md focus:outline-none"
+                    placeholder="Message" />
+                <button class="bg-white border-none py-2 px-[10px] cursor-pointer ml-[10px] rounded-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                        <path
+                            d="M16.1 260.2c-22.6 12.9-20.5 47.3 3.6 57.3L160 376V479.3c0 18.1 14.6 32.7 32.7 32.7c9.7 0 18.9-4.3 25.1-11.8l62-74.3 123.9 51.6c18.9 7.9 40.8-4.5 43.9-24.7l64-416c1.9-12.1-3.4-24.3-13.5-31.2s-23.3-7.5-34-1.4l-448 256zm52.1 25.5L409.7 90.6 190.1 336l1.2 1L68.2 285.7zM403.3 425.4L236.7 355.9 450.8 116.6 403.3 425.4z" />
+                    </svg>
+                </button>
+            </form>
+            <div id="chat-messages" class="text-end p-5 overflow-auto max-h-[calc(100%-100px)] "></div>
+        </div>
+    </div>
+
+    <script src="client.js"></script>
+</body>
+
+</html>
