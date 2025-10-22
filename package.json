@@ -4,6 +4,7 @@
   "description": "",
   "main": "tailwind.config.js",
   "scripts": {
+    "start": "live-server .",
     "tailwind": "npx tailwindcss -i ./src/style.css -o ./build/css/style.css --watch"
   },
   "repository": {
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/hayrapetyanlusine/real-time-chat/issues"
   },
-  "homepage": "https://github.com/hayrapetyanlusine/real-time-chat#readme"
+  "homepage": "https://github.com/hayrapetyanlusine/real-time-chat#readme",
+  "devDependencies": {
+    "tailwindcss": "^4.1.15"
+  }
 }
